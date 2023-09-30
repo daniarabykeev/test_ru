@@ -1,7 +1,7 @@
 .navbar_main {
   width: 100%;
   height: 38px;
-  background: #a3c7f1;
+  background: #1e9bff;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -12,5 +12,21 @@
     background: none;
     border: none;
     cursor: pointer;
+  }
+}
+
+.form_main {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+
+  & input {
+    margin-top: 30px;
+    height: 38px;
+  }
+
+  & :last-child {
+    margin-top: 20px;
+    margin-bottom: 15px;
   }
 }

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Form from "./Form";
 import { setUser } from "../store/slices/userSlice";
+import classes from "./Styles.module.scss";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className={classes.login_main}>
       <Form title="sign in" handleClick={handleLogin} />
     </div>
   );
