@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getDatabase, ref, set } from "firebase/database";
 
 const initialState = {
-  email: "erwef",
+  email: null,
   token: null,
   id: null,
 };
@@ -29,5 +29,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, removeUser } = userSlice;
+export const { setUser, removeUser } = userSlice.actions;
 export default userSlice.reducer;
