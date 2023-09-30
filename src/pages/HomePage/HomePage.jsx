@@ -1,13 +1,13 @@
 import { child, get, getDatabase, ref } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
-import { useAuth } from "../../hooks/use-auth";
+// import { useAuth } from "../../hooks/use-auth";
 import classes from "./HomePage.module.scss";
 import axios from "axios";
 
 const HomePage = () => {
   const dbRef = ref(getDatabase());
-  const { isAuth, email } = useAuth();
+  //   const { isAuth, email } = useAuth();
   const [show, setShow] = useState(false);
   const [usersData, setUsersData] = useState([]);
 
@@ -50,12 +50,12 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (isAuth) {
-      fetchUsers();
-    } else {
-      setUsersData([]);
-    }
-  }, [isAuth]);
+    //   if (isAuth) {
+    fetchUsers();
+    //   } else {
+    setUsersData([]);
+    //   }
+  }, []);
 
   return (
     <div>
@@ -67,7 +67,11 @@ const HomePage = () => {
         <div className={classes.home_page_users}>
           {usersData.map((user, index) => (
             <div key={index} className={classes.home_card}>
-              <img src={user.avatar} alt={`Avatar of ${user.name}`} />
+              <img
+                className={classes.card_img}
+                src={user.avatar}
+                alt={`Avatar of ${user.name}`}
+              />
               <p className={classes.card_name}>
                 {user.name.length > 20
                   ? user.name.slice(0, 20) + "..."

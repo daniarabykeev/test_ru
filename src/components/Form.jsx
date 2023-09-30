@@ -1,14 +1,15 @@
 import { useState } from "react";
 import classes from "./Styles.module.scss";
+import Button from "./Button/Button";
 import Button2 from "./Button2/Button2";
 
 const Form = ({ title, handleClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
-      e.preventDefault()
-      handleClick(email, password)
-  }
+    e.preventDefault();
+    handleClick(email, password);
+  };
   return (
     <form className={classes.form_main} onSubmit={handleSubmit}>
       <input
@@ -17,6 +18,8 @@ const Form = ({ title, handleClick }) => {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="email"
         required
+        tabIndex={1}
+        autoFocus
       />
       <input
         type="password"
@@ -24,12 +27,15 @@ const Form = ({ title, handleClick }) => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="password"
         required
+        tabIndex={2}
       />
       <div className={classes.form_btn}>
-          <Button type={'submit'}>
-              {title}
-          </Button>
-        //<Button2 onClick={() => handleClick(email, password)} title={title} />
+        {/* <Button tabIndex={3} type={"submit"}>
+          {title}
+        </Button> */}
+        <Button2 tabIndex={3} type={"submit"}>
+          {title}
+        </Button2>
       </div>
     </form>
   );

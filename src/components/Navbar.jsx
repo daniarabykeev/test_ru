@@ -1,20 +1,21 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./Styles.module.scss";
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/use-auth";
 import { removeUser } from "../store/slices/userSlice";
+import { getEmail } from "../store/selectors/userSelector";
+import Logout from "../assets/logout.png";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { isAuth, email } = useAuth();
-  return isAuth ? (
-    <div className={classes.navbar_main}>
-      <h2>Welcome, {email}</h2>
-      <button onClick={() => dispatch(removeUser())}>logout</button>
+  const email = useSelector(getEmail).split("@");
+  return (
+    <div>
+      <div className={classes.navbar_main}>
+        <h3>Welcome, {email[0]}</h3>
+        <button onClick={() => dispatch(removeUser())}>
+          <img src={Logout} alt="" className={classes.navbar_img} />
+        </button>
+      </div>
     </div>
-  ) : (
-    <Navigate to={"/"} />
   );
 };
-
 export default Navbar;
