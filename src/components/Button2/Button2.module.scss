@@ -23,23 +23,23 @@ a {
   transition: 0.5s;
 }
 
-a:hover {
+.btn_main:hover a {
   background: var(--bg-blue);
   color: var(--bg-blue);
   box-shadow: 0 0 35px var(--bg-blue);
 }
 
-// a:hover {
-//   background: var(--bg-green);
-//   color: var(--bg-green);
-//   box-shadow: 0 0 35px var(--bg-green);
-// }
+.btn_main:active a {
+  background: var(--bg-green);
+  color: var(--bg-green);
+  box-shadow: 0 0 35px var(--bg-green);
+}
 
-// a:hover {
-//     background: var(--bg-pink);
-//     color: var(--bg-pink);
-//     box-shadow: 0 0 35px var(--bg-pink);
-//   }
+.btn_main:focus a {
+    background: var(--bg-pink);
+    color: var(--bg-pink);
+    box-shadow: 0 0 35px var(--bg-pink);
+  }
 
 a::before {
   content: "";
