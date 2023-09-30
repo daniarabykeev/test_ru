@@ -1,5 +1,5 @@
 import { child, get, getDatabase, ref } from "firebase/database";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from "../../components/Navbar";
 
 const HomePage = () => {

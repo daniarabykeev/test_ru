@@ -1,14 +1,14 @@
-import React from "react";
 import classes from "./Button.module.scss";
 
-const Button = () => {
+const Button = (props) => {
+    const {children, ...otherProps} = props;
   return (
-    <div className={classes.btn_main}>
-      <a href="#">
-        <span>Button</span>
+    <button {...otherProps} className={classes.btn_main}>
+      <a>
+        <span>{children}</span>
         <i></i>
       </a>
-    </div>
+    </button>
   );
 };
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import classes from "./Styles.module.scss";
 import { Navigate } from "react-router-dom";

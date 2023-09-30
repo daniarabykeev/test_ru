@@ -1,29 +1,15 @@
-import React from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Form from "./Form";
-import { setUser } from "../store/slices/userSlice";
 import classes from "./Styles.module.scss";
+import {useCallback} from "react";
+import {fetchAuth} from "../store/services/userServices.js";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const handleLogin = (email, password) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        console.log(user);
-        // dispatch(setUser({
-        //     email: user.email,
-        //     id: user.id,
-        //     token: user.accessToken
-        // }))
-        navigate("/");
-      })
-      .catch(alert);
-  };
+  const handleLogin = useCallback ((email, password) => {
+      dispatch(fetchAuth({ email, password }));
+  }, [dispatch]);
 
   return (
     <div className={classes.login_main}>

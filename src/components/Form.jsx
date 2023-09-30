@@ -1,29 +1,36 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import classes from "./Styles.module.scss";
 import Button from "./Button/Button";
 
 const Form = ({ title, handleClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const handleSubmit = (e) => {
+      e.preventDefault()
+      handleClick(email, password)
+  }
   return (
-    <div className={classes.form_main}>
+    <form className={classes.form_main} onSubmit={handleSubmit}>
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="email"
+        required
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="password"
+        required
       />
       <div className={classes.form_btn}>
-        <Button onClick={() => handleClick(email, password)} />
+          <Button type={'submit'}>
+              {title}
+          </Button>
       </div>
-    </div>
+    </form>
   );
 };
 
