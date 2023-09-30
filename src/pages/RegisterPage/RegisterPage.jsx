@@ -1,6 +1,6 @@
 import React from "react";
 import SignUp from "../../components/SignUp";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import classes from "./RegisterPage.module.scss";
 
 const RegisterPage = () => {

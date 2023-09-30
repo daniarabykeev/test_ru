@@ -1,7 +1,6 @@
 import { useState } from "react";
 import classes from "./Styles.module.scss";
 import Button from "./Button/Button";
-import Button2 from "./Button2/Button2";
 
 const Form = ({ title, handleClick }) => {
   const [email, setEmail] = useState("");
@@ -30,12 +29,9 @@ const Form = ({ title, handleClick }) => {
         tabIndex={2}
       />
       <div className={classes.form_btn}>
-        {/* <Button tabIndex={3} type={"submit"}>
+        <Button tabIndex={3} type={"submit"}>
           {title}
-        </Button> */}
-        <Button2 tabIndex={3} type={"submit"}>
-          {title}
-        </Button2>
+        </Button>
       </div>
     </form>
   );
