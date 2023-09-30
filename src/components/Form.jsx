@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classes from "./Styles.module.scss";
-import Button from "./Button/Button";
+import Button2 from "./Button2/Button2";
 
 const Form = ({ title, handleClick }) => {
   const [email, setEmail] = useState("");
@@ -29,6 +29,7 @@ const Form = ({ title, handleClick }) => {
           <Button type={'submit'}>
               {title}
           </Button>
+        //<Button2 onClick={() => handleClick(email, password)} title={title} />
       </div>
     </form>
   );

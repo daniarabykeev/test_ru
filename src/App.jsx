@@ -1,4 +1,5 @@
 import {useMemo} from "react";
+import Button2 from "./components/Button2/Button2";
 import MainRoutes from "./routes/MainRoutes";
 import {Provider} from "react-redux";
 import {useNavigate} from "react-router-dom";
