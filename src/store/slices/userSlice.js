@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getDatabase, ref, set } from "firebase/database";
 
 const initialState = {
-  email: null,
+  email: "null",
   token: null,
   id: null,
 };
