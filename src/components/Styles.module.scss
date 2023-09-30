@@ -26,6 +26,10 @@
     height: 38px;
     padding: 0 10px;
   }
+
+  & input:focus {
+    outline: none;
+  }
 }
 
 .form_btn {
