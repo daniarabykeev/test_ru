@@ -1,61 +1,20 @@
-import { child, get, getDatabase, ref } from "firebase/database";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
-// import { useAuth } from "../../hooks/use-auth";
 import classes from "./HomePage.module.scss";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from "../../store/selectors/userSelector";
+import { fetchAllUsers } from "../../store/services/userServices";
 
 const HomePage = () => {
-  const dbRef = ref(getDatabase());
-  //   const { isAuth, email } = useAuth();
   const [show, setShow] = useState(false);
-  const [usersData, setUsersData] = useState([]);
-
+  const dispatch = useDispatch()
+  const users = useSelector(getAllUsers);
   const showUsers = () => {
     setShow(!show);
   };
-
-  const getRandomUserData = async () => {
-    try {
-      const response = await axios.get("https://randomuser.me/api/");
-      const userData = response.data.results[0];
-      return {
-        name: `${userData.name.first} ${userData.name.last}`,
-        email: userData.email,
-        avatar: userData.picture.large,
-      };
-    } catch (error) {
-      console.error("Error fetching random user data", error);
-      return null;
-    }
-  };
-
-  const fetchUsers = async () => {
-    try {
-      const res = await get(child(dbRef, "users/"));
-      const usersData = res.val();
-      if (usersData) {
-        const userList = Object.values(usersData).map((user) => user.email);
-        const randomUsersData = await Promise.all(
-          userList.map(async (email) => {
-            const userData = await getRandomUserData();
-            return { ...userData, email };
-          })
-        );
-        setUsersData(randomUsersData);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    //   if (isAuth) {
-    fetchUsers();
-    //   } else {
-    setUsersData([]);
-    //   }
-  }, []);
+    dispatch(fetchAllUsers())
+  }, [dispatch]);
 
   return (
     <div>
@@ -65,7 +24,7 @@ const HomePage = () => {
       </button>
       {show && (
         <div className={classes.home_page_users}>
-          {usersData.map((user, index) => (
+          {users.map((user, index) => (
             <div key={index} className={classes.home_card}>
               <img
                 className={classes.card_img}
